@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "🚀 Starting SkillBridge Backend with SQLite Database..."
+echo ""
+
+# Kill any process on port 8000
+lsof -ti:8000 | xargs kill -9 2>/dev/null
+sleep 1
+
+if [ ! -d "venv" ]; then
+    echo "📦 Creating virtual environment..."
+    python3 -m venv venv
+fi
+
+echo "🔧 Activating virtual environment..."
+source venv/bin/activate
+
+echo "⬆️  Upgrading pip..."
+pip install --upgrade pip --quiet
+
+echo "📥 Installing dependencies..."
+pip install -r requirements_simple.txt
+
+echo ""
+echo "✅ Starting server on http://localhost:8000"
+echo "📊 Database: skillbridge.db"
+echo "📚 API Docs: http://localhost:8000/docs"
+echo ""
+python main_with_db.py
