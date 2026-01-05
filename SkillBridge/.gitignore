@@ -48,3 +48,9 @@ ENV/
 ../todo-devops-boot/
 ../*
 !../SkillBridge/
+
+# Temporary markdown files
+*.md
+!README.md
+!backend/README.md
+!backend/README_DB.md
